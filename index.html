@@ -32,18 +32,32 @@
       </ul>
     </hearder>
 
-    <div class="info-wrapper">
-      <div class="info-container">
-        <form id="info-form">
-          <div>키: <input class="height" type="text" /></div>
-          <div>몸무게: <input class="weight" type="text" /></div>
-          <div class="start-btn">
-            <span class="info-save"><a href="workout.html">운동시작!!</a></span>
-          </div>
-        </form>
+    <form id="info-form" class="hidden">
+      <div>이름: <input required class="my-name" type="text" /></div>
+      <div>
+        몸무게: <input required maxlength="3" class="weight" type="text" />
       </div>
+      <div>
+        <input type="submit" value="운동시작!" />
+      </div>
+    </form>
+
+    <h1 id="result-info" class="hidden"></h1>
+
+    <div class="clock-container">
+      <h2>스톱워치</h2>
+      <h1>
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span
+          id="tenMillis"
+          >00</span
+        >
+      </h1>
+      <button id="start-btn">START</button>
+      <button id="stop-btn">STOP</button>
+      <button id="reset-btn">RESET</button>
     </div>
 
-    <sciprt src="index.js"></sciprt>
+    <script src="index.js"></script>
+    <script src="clock.js"></script>
   </body>
 </html>
