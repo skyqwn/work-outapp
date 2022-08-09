@@ -7,19 +7,32 @@ const appendSeconds = document.getElementById("seconds");
 const appendMinutes = document.getElementById("minutes");
 const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
-const restBtn = document.getElementById("reset-btn");
+const resetBtn = document.getElementById("reset-btn");
 let intervalId;
 
-startBtn.onclick = function () {
+// startBtn.onclick = () => {
+//   clearInterval(intervalId);
+//   intervalId = setInterval(operateTimer, 10);
+// };
+
+const clockStart = () => {
   clearInterval(intervalId);
   intervalId = setInterval(operateTimer, 10);
 };
 
-stopBtn.onclick = function () {
+startBtn.addEventListener("click", clockStart);
+
+const clockStop = () => {
   clearInterval(intervalId);
 };
 
-restBtn.onclick = function () {
+stopBtn.addEventListener("click", clockStop);
+
+// stopBtn.onclick = () => {
+//   clearInterval(intervalId);
+// };
+
+const clockReset = () => {
   clearInterval(intervalId);
   tenMillis = 0;
   seconds = 0;
@@ -28,6 +41,18 @@ restBtn.onclick = function () {
   appendSeconds.textContent = "00";
   appendMinutes.textContent = "00";
 };
+
+resetBtn.addEventListener("click", clockReset);
+
+// resetBtn.onclick = () => {
+//   clearInterval(intervalId);
+//   tenMillis = 0;
+//   seconds = 0;
+//   minutes = 0;
+//   appendTens.textContent = "00";
+//   appendSeconds.textContent = "00";
+//   appendMinutes.textContent = "00";
+// };
 
 // 10ms 마다 시간에 대한 숫자가 증가한다!
 const operateTimer = () => {

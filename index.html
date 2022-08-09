@@ -18,6 +18,15 @@
     <title>HOME</title>
   </head>
   <body>
+    <div class="today-workout hidden">
+      <div class="white-bg">
+        <div class="today-pullup"></div>
+        <div class="today-pushup"></div>
+        <div class="today-squat"></div>
+        <button id="close-btn">닫기</button>
+      </div>
+    </div>
+
     <hearder>
       <ul class="nav">
         <a href="index.html"
@@ -45,7 +54,7 @@
     <h1 id="result-info" class="hidden"></h1>
 
     <div class="clock-container">
-      <h2>스톱워치</h2>
+      <h2>운동 타이머</h2>
       <h1>
         <span id="minutes">00</span>:<span id="seconds">00</span>:<span
           id="tenMillis"
@@ -57,7 +66,46 @@
       <button id="reset-btn">RESET</button>
     </div>
 
-    <script src="index.js"></script>
-    <script src="clock.js"></script>
+    <div class="workout-container">
+      <div class="pullup-wrapper">
+        <form id="pullup-form">
+          <h3>풀업</h3>
+          <input class="pullup-count" type="number" placeholder="풀업" />
+          <div class="count-display"></div>
+        </form>
+        <div class="pullup-result"></div>
+      </div>
+
+      <!-- 풀업-->
+      <div class="pushup-wrapper">
+        <form id="pushup-form">
+          <h3>푸쉬업</h3>
+          <input class="pushup-count" type="number" placeholder="푸쉬업" />
+          <div class="count-display"></div>
+        </form>
+        <div class="pushup-result"></div>
+      </div>
+
+      <!-- 푸쉬 업 -->
+
+      <div class="squat-wrapper">
+        <form id="squat-form">
+          <h3>스쿼트</h3>
+          <input class="squat-count" type="number" placeholder="스쿼트" />
+          <div class="count-display"></div>
+        </form>
+        <div class="squat-result"></div>
+      </div>
+    </div>
+    <button class="finish-workout">운동완료</button>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+    <script src="js/clock.js"></script>
+    <script src="js/count.js"></script>
   </body>
 </html>
