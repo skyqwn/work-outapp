@@ -12,7 +12,7 @@ const todayWorkout = document.querySelector(".today-workout");
 const todayPullUp = document.querySelector(".today-pullup");
 const todayPushUp = document.querySelector(".today-pushup");
 const todaySquat = document.querySelector(".today-squat");
-const clostBtn = document.querySelector("#close-btn");
+const closeBtn = document.querySelector("#close-btn");
 let pullupArr = JSON.parse(localStorage.getItem("pullup")) || [];
 let pullUpCount = 0;
 let pushUpCount = 0;
@@ -175,13 +175,20 @@ const handleFinish = (e) => {
 
   todayWorkout.classList.remove("hidden");
 
-  const h1 = document.createElement("h1");
-  h1.innerText = `총 턱걸이횟수는: ${totalPullUp}회입니다.`;
-  todayPullUp.appendChild(h1);
+  const pullUph1 = document.createElement("h1");
+  pullUph1.innerText = `총 턱걸이 횟수는 ${totalPullUp}회입니다.`;
+  const pushUph1 = document.createElement("h1");
+  pushUph1.innerText = `총 팔굽혀펴기 횟숫는 ${totalPushUp}회입니다.`;
+  const squath1 = document.createElement("h1");
+  squath1.innerText = `총 스쿼트 횟수는 ${totalSquat}회입니다.`;
 
-  clostBtn.addEventListener("click", () => {
-    todayWorkout.classList.add("hidden");
-  });
+  todayPullUp.innerHTML = "";
+  todayPushUp.innerHTML = "";
+  todaySquat.innerHTML = "";
+
+  todayPullUp.appendChild(pullUph1);
+  todayPushUp.appendChild(pushUph1);
+  todaySquat.appendChild(squath1);
 };
 
 const init = () => {
@@ -189,5 +196,8 @@ const init = () => {
   pushUpForm.addEventListener("submit", handlePushUpCount);
   squatForm.addEventListener("submit", handleSquatCount);
   finishWorkOut.addEventListener("click", handleFinish);
+  closeBtn.addEventListener("click", () => {
+    todayWorkout.classList.add("hidden");
+  });
 };
 init();

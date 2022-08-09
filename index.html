@@ -20,9 +20,9 @@
   <body>
     <div class="today-workout hidden">
       <div class="white-bg">
-        <div class="today-pullup"></div>
-        <div class="today-pushup"></div>
-        <div class="today-squat"></div>
+        <div class="today-pullup good"></div>
+        <div class="today-pushup good"></div>
+        <div class="today-squat good"></div>
         <button id="close-btn">닫기</button>
       </div>
     </div>
@@ -70,7 +70,12 @@
       <div class="pullup-wrapper">
         <form id="pullup-form">
           <h3>풀업</h3>
-          <input class="pullup-count" type="number" placeholder="풀업" />
+          <input
+            class="pullup-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="풀업"
+          />
           <div class="count-display"></div>
         </form>
         <div class="pullup-result"></div>
@@ -80,7 +85,12 @@
       <div class="pushup-wrapper">
         <form id="pushup-form">
           <h3>푸쉬업</h3>
-          <input class="pushup-count" type="number" placeholder="푸쉬업" />
+          <input
+            class="pushup-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="푸쉬업"
+          />
           <div class="count-display"></div>
         </form>
         <div class="pushup-result"></div>
@@ -91,7 +101,12 @@
       <div class="squat-wrapper">
         <form id="squat-form">
           <h3>스쿼트</h3>
-          <input class="squat-count" type="number" placeholder="스쿼트" />
+          <input
+            class="squat-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="스쿼트"
+          />
           <div class="count-display"></div>
         </form>
         <div class="squat-result"></div>

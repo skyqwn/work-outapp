@@ -8,6 +8,7 @@ const appendMinutes = document.getElementById("minutes");
 const startBtn = document.getElementById("start-btn");
 const stopBtn = document.getElementById("stop-btn");
 const resetBtn = document.getElementById("reset-btn");
+
 let intervalId;
 
 // startBtn.onclick = () => {
@@ -24,6 +25,7 @@ startBtn.addEventListener("click", clockStart);
 
 const clockStop = () => {
   clearInterval(intervalId);
+  console.log(intervalId);
 };
 
 stopBtn.addEventListener("click", clockStop);

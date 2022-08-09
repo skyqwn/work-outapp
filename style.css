@@ -79,7 +79,9 @@ header {
 
 /* workout page */
 
-.pullup-wrapper {
+.pullup-wrapper,
+.pushup-wrapper,
+.squat-wrapper {
   display: flex;
   flex-direction: column;
 }
@@ -89,12 +91,16 @@ header {
   align-items: center;
   justify-content: space-between;
 }
-.pullup-div {
+.pullup-div,
+.pushup-div,
+.squat-div {
   display: flex;
   align-items: center;
 }
 
-.pullup-result {
+.pullup-result,
+.pushup-reult,
+.squat-result {
   margin-top: 5px;
 }
 /* 하루 운동한 모달창 */
@@ -112,8 +118,15 @@ header {
   height: 90%;
   background: white;
   border-radius: 5px;
-  padding: 30px;
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+.good {
+  width: 80%;
+  height: 150px;
+  padding: 20px;
+  margin: 10px;
+  background-color: #eee;
 }
