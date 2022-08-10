@@ -12,7 +12,25 @@ const todayWorkout = document.querySelector(".today-workout");
 const todayPullUp = document.querySelector(".today-pullup");
 const todayPushUp = document.querySelector(".today-pushup");
 const todaySquat = document.querySelector(".today-squat");
+const todayTime = document.querySelector(".today-time");
 const closeBtn = document.querySelector("#close-btn");
+const logOut = document.querySelector(".log-out");
+const chartBtn = document.querySelector("#chart-btn");
+
+///운동시간////
+let minutes = 0;
+let seconds = 0;
+let tenMillis = 0;
+const clockContainer = document.querySelector(".clock-container");
+const appendTens = document.getElementById("tenMillis");
+const appendSeconds = document.getElementById("seconds");
+const appendMinutes = document.getElementById("minutes");
+const startBtn = document.getElementById("start-btn");
+const stopBtn = document.getElementById("stop-btn");
+const resetBtn = document.getElementById("reset-btn");
+
+let intervalId;
+//
 let pullupArr = JSON.parse(localStorage.getItem("pullup")) || [];
 let pullUpCount = 0;
 let pushUpCount = 0;
@@ -159,6 +177,7 @@ const handleFinish = (e) => {
   const savedPushUp = JSON.parse(localStorage.getItem("pushup"));
 
   let totalSquat = 0;
+
   for (let i = 0; i < savedSquat.length; i++) {
     totalSquat += parseInt(savedSquat[i].squat);
   }
@@ -173,25 +192,31 @@ const handleFinish = (e) => {
     totalPullUp += parseInt(savedPullUp[i].pullUp);
   }
 
+  clockStop();
+
   todayWorkout.classList.remove("hidden");
-
+  const timeh1 = document.createElement("h1");
+  timeh1.innerText = `오늘 운동시간은 ${appendMinutes.innerText}분 ${appendSeconds.innerText}초 입니다. `;
   const pullUph1 = document.createElement("h1");
-  pullUph1.innerText = `총 턱걸이 횟수는 ${totalPullUp}회입니다.`;
+  pullUph1.innerText = `오늘 총 턱걸이 횟수는 ${totalPullUp}회입니다.`;
   const pushUph1 = document.createElement("h1");
-  pushUph1.innerText = `총 팔굽혀펴기 횟숫는 ${totalPushUp}회입니다.`;
+  pushUph1.innerText = `오늘 총 팔굽혀펴기 횟숫는 ${totalPushUp}회입니다.`;
   const squath1 = document.createElement("h1");
-  squath1.innerText = `총 스쿼트 횟수는 ${totalSquat}회입니다.`;
+  squath1.innerText = `오늘 총 스쿼트 횟수는 ${totalSquat}회입니다.`;
 
+  todayTime.innerHTML = "";
   todayPullUp.innerHTML = "";
   todayPushUp.innerHTML = "";
   todaySquat.innerHTML = "";
 
+  todayTime.appendChild(timeh1);
   todayPullUp.appendChild(pullUph1);
   todayPushUp.appendChild(pushUph1);
   todaySquat.appendChild(squath1);
 };
 
 const init = () => {
+  getDay();
   pullUpForm.addEventListener("submit", handleCount);
   pushUpForm.addEventListener("submit", handlePushUpCount);
   squatForm.addEventListener("submit", handleSquatCount);
@@ -199,5 +224,58 @@ const init = () => {
   closeBtn.addEventListener("click", () => {
     todayWorkout.classList.add("hidden");
   });
+  logOut.addEventListener("click", () => {
+    localStorage.removeItem("myInfo");
+    localStorage.removeItem("squat");
+    localStorage.removeItem("pushup");
+    localStorage.removeItem("pullup");
+    location.reload();
+    window.location.href = "index.html";
+  });
+  chartBtn.addEventListener("click", () => {
+    window.location.href = "chart.html";
+  });
 };
 init();
+
+const clockStart = () => {
+  clearInterval(intervalId);
+  intervalId = setInterval(operateTimer, 10);
+};
+
+startBtn.addEventListener("click", clockStart);
+
+const clockStop = () => {
+  clearInterval(intervalId);
+};
+
+stopBtn.addEventListener("click", clockStop);
+
+const clockReset = () => {
+  clearInterval(intervalId);
+  tenMillis = 0;
+  seconds = 0;
+  minutes = 0;
+  appendTens.textContent = "00";
+  appendSeconds.textContent = "00";
+  appendMinutes.textContent = "00";
+};
+
+resetBtn.addEventListener("click", clockReset);
+
+const operateTimer = () => {
+  tenMillis++;
+  appendTens.innerText = tenMillis > 9 ? tenMillis : "0" + tenMillis;
+  if (tenMillis > 99) {
+    seconds++;
+    appendSeconds.innerText = seconds > 9 ? seconds : "0" + seconds;
+    tenMillis = 0;
+    appendTens.innerText = "00";
+  }
+  if (seconds > 59) {
+    minutes++;
+    appendMinutes.innerText = minutes > 9 ? minutes : "0" + minutes;
+    seconds = 0;
+    appendSeconds.innerText = "00";
+  }
+};

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -15,9 +15,20 @@
       src="https://kit.fontawesome.com/8343738bb6.js"
       crossorigin="anonymous"
     ></script>
-    <title>Document</title>
+    <title>HOME</title>
   </head>
   <body>
+    <div class="today-workout hidden">
+      <div class="white-bg">
+        <div class="today-time good"></div>
+        <div class="today-pullup good"></div>
+        <div class="today-pushup good"></div>
+        <div class="today-squat good"></div>
+        <button id="close-btn">닫기</button>
+        <button id="chart-btn">차트보기</button>
+      </div>
+    </div>
+
     <hearder>
       <ul class="nav">
         <a href="index.html"
@@ -32,8 +43,78 @@
       </ul>
     </hearder>
 
-    <button id="why">asd</button>
+    <div class="info-container">
+      <h1 id="result-info" class="hidden"></h1>
+      <button class="log-out">정보변경</button>
+    </div>
+    <div class="clock-container">
+      <h2>운동 타이머</h2>
+      <h1>
+        <span id="minutes">00</span>:<span id="seconds">00</span>:<span
+          id="tenMillis"
+          >00</span
+        >
+      </h1>
+      <button id="start-btn">START</button>
+      <button id="stop-btn">STOP</button>
+      <button id="reset-btn">RESET</button>
+    </div>
 
-    <sciprt src="index2.js"></sciprt>
+    <div class="workout-container">
+      <div class="pullup-wrapper">
+        <form id="pullup-form">
+          <h3>풀업</h3>
+          <input
+            class="pullup-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="풀업"
+          />
+          <div class="count-display"></div>
+        </form>
+        <div class="pullup-result"></div>
+      </div>
+
+      <!-- 풀업-->
+      <div class="pushup-wrapper">
+        <form id="pushup-form">
+          <h3>푸쉬업</h3>
+          <input
+            class="pushup-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="푸쉬업"
+          />
+          <div class="count-display"></div>
+        </form>
+        <div class="pushup-result"></div>
+      </div>
+
+      <!-- 푸쉬 업 -->
+
+      <div class="squat-wrapper">
+        <form id="squat-form">
+          <h3>스쿼트</h3>
+          <input
+            class="squat-count"
+            type="text"
+            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+            placeholder="스쿼트"
+          />
+          <div class="count-display"></div>
+        </form>
+        <div class="squat-result"></div>
+      </div>
+    </div>
+    <button class="finish-workout">운동완료</button>
+
+    <script
+      src="https://code.jquery.com/jquery-3.6.0.min.js"
+      integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
+      crossorigin="anonymous"
+    ></script>
+    <script src="js/index.js"></script>
+    <!-- <script src="js/clock.js"></script> -->
+    <script src="js/count.js"></script>
   </body>
 </html>
