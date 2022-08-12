@@ -16,6 +16,8 @@ const todayTime = document.querySelector(".today-time");
 const closeBtn = document.querySelector("#close-btn");
 const logOut = document.querySelector(".log-out");
 const chartBtn = document.querySelector("#chart-btn");
+const workoutWrapper = document.querySelector(".workout-wrapper");
+const toggleBtn = document.querySelector(".nav-toggleBtn");
 
 ///운동시간////
 let minutes = 0;
@@ -36,10 +38,25 @@ let pullUpCount = 0;
 let pushUpCount = 0;
 let squatCount = 0;
 
+let totalCount = {};
+
 // ----pull-up------------------//
 
 const savePullUp = (data) => {
   pullupArr.push(data);
+  localStorage.setItem("pullup", JSON.stringify(pullupArr));
+};
+
+const pullUpDelete = (e) => {
+  1;
+  e.preventDefault();
+  const div = e.target.parentElement;
+  div.remove();
+
+  const removePullup = pullupArr.filter((pullup) => {
+    return div.id !== pullup.id;
+  });
+  pullupArr = removePullup;
   localStorage.setItem("pullup", JSON.stringify(pullupArr));
 };
 
@@ -51,8 +68,12 @@ const paintPullUp = (data) => {
   set.innerText = `${data.set}세트:   `;
   const span = document.createElement("span");
   span.innerText = `  ${data.pullUp}회`;
+  const xBtn = document.createElement("button");
+  xBtn.innerText = "❌";
+  xBtn.addEventListener("click", pullUpDelete);
   div.append(set);
   div.append(span);
+  div.append(xBtn);
   pullUpResult.append(div);
 };
 
@@ -88,6 +109,19 @@ const savePushUp = (data) => {
   localStorage.setItem("pushup", JSON.stringify(pushupArr));
 };
 
+const pushUpDelete = (e) => {
+  e.preventDefault();
+  const div = e.target.parentElement;
+  div.remove();
+
+  const removePushup = pushupArr.filter((pushup) => {
+    return pushup.id !== div.id;
+  });
+
+  pushupArr = removePushup;
+  localStorage.setItem("pushup", JSON.stringify(pushupArr));
+};
+
 const paintPushUp = (data) => {
   const div = document.createElement("div");
   div.id = data.id;
@@ -96,8 +130,12 @@ const paintPushUp = (data) => {
   set.innerText = `${data.set}세트:   `;
   const span = document.createElement("span");
   span.innerText = `  ${data.pushUp}회`;
+  const xBtn = document.createElement("button");
+  xBtn.innerText = "❌";
+  xBtn.addEventListener("click", pushUpDelete);
   div.append(set);
   div.append(span);
+  div.append(xBtn);
   pushUpResult.append(div);
 };
 
@@ -133,6 +171,19 @@ const saveSquat = (data) => {
   localStorage.setItem("squat", JSON.stringify(squatArr));
 };
 
+const squatDelete = (e) => {
+  e.preventDefault();
+  const div = e.target.parentElement;
+  div.remove();
+
+  const removeSquat = squatArr.filter((squat) => {
+    return squat.id !== div.id;
+  });
+
+  squatArr = removeSquat;
+  localStorage.setItem("squat", JSON.stringify(squatArr));
+};
+
 const paintSquat = (data) => {
   const div = document.createElement("div");
   div.id = data.id;
@@ -141,8 +192,12 @@ const paintSquat = (data) => {
   set.innerText = `${data.set}세트:   `;
   const span = document.createElement("span");
   span.innerText = `  ${data.squat}회`;
+  const xBtn = document.createElement("button");
+  xBtn.innerText = "❌";
+  xBtn.addEventListener("click", squatDelete);
   div.append(set);
   div.append(span);
+  div.append(xBtn);
   squatResult.append(div);
 };
 
@@ -177,6 +232,10 @@ const handleFinish = (e) => {
   const savedPushUp = JSON.parse(localStorage.getItem("pushup"));
 
   let totalSquat = 0;
+
+  if (savedSquat === null || savedPullUp === null || savedPushUp === null) {
+    return alert("모든종목 한세트라도 하고 끝내라");
+  }
 
   for (let i = 0; i < savedSquat.length; i++) {
     totalSquat += parseInt(savedSquat[i].squat);
@@ -215,6 +274,8 @@ const handleFinish = (e) => {
   todaySquat.appendChild(squath1);
 };
 
+toggleBtn.addEventListener("click", () => {});
+
 const init = () => {
   getDay();
   pullUpForm.addEventListener("submit", handleCount);
@@ -238,9 +299,12 @@ const init = () => {
 };
 init();
 
+// ------------시계-----------------//
+
 const clockStart = () => {
   clearInterval(intervalId);
   intervalId = setInterval(operateTimer, 10);
+  workoutWrapper.classList.remove("hidden");
 };
 
 startBtn.addEventListener("click", clockStart);

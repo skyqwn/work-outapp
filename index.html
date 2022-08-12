@@ -4,9 +4,15 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
+
     <link
       href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans&display=swap"
       rel="stylesheet"
@@ -15,6 +21,8 @@
       src="https://kit.fontawesome.com/8343738bb6.js"
       crossorigin="anonymous"
     ></script>
+    <link rel="stylesheet" href="css/style.css" />
+
     <title>HOME</title>
   </head>
   <body>
@@ -32,19 +40,7 @@
       </ul>
     </hearder>
 
-    <form id="info-form" class="hidden">
-      <div>이름: <input required class="my-name" type="text" /></div>
-      <div>
-        몸무게: <input required maxlength="3" class="weight" type="text" />
-      </div>
-      <div>
-        <input type="submit" value="운동시작!" />
-      </div>
-    </form>
-
-    <h1 id="result-info" class="hidden"></h1>
-
-    <button class="slide-1">1</button>
+    <!-- <button class="slide-1">1</button>
     <button class="slide-2">2</button>
     <button class="slide-3">3</button>
     <div style="overflow: hidden">
@@ -59,8 +55,75 @@
           <img src="img/squat.jpg" />
         </div>
       </div>
+    </div> -->
+
+    <div class="title">
+      <h1 class="title-content">
+        Man Sam Woon<span>맨몸운동 세가지로 조진다</span>
+      </h1>
     </div>
 
+    <div class="container mt-5">
+      <div class="card-group">
+        <div class="card">
+          <img src="img/pullup.jpg" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">Pull Up</h5>
+            <p class="card-text">미친듯이 땡겨라</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="img/pushup.jpg" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">Push Up</h5>
+            <p class="card-text">죽을듯이 밀어라</p>
+          </div>
+        </div>
+        <div class="card">
+          <img src="img/squat.jpg" class="card-img-top" />
+          <div class="card-body">
+            <h5 class="card-title">Squat</h5>
+            <p class="card-text">꼼수쓰지말고 발바닥으로 밀어라</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <form id="info-form" class="hidden">
+        <div class="mb-3">
+          <label for="exampleInputEmail1" class="form-label">이름요</label>
+          <input required class="my-name" type="text" />
+        </div>
+        <div class="mb-3">
+          <label class="form-label">몸무게 </label>
+          <input required maxlength="3" class="weight" type="text" />
+        </div>
+
+        <button type="submit" class="btn btn-danger">운동시작</button>
+      </form>
+    </div>
+    <h1 id="result-info" class="hidden"></h1>
+
+    <!-- <div class="container">
+      <form id="info-form" class="hidden">
+        <div>이름l: <input required cass="my-name" type="text" /></div>
+        <div>
+          몸무게: <input required maxlength="3" class="weight" type="text" />
+        </div>
+        <div>
+          <input type="submit" value="운동시작!" />
+        </div>
+      </form>
+
+      <h1 id="result-info" class="hidden"></h1>
+    </div> -->
+
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="

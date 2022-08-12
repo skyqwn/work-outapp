@@ -4,6 +4,12 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="css/style.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -40,12 +46,17 @@
         <a href="chart.html">
           <li><i class="fa-solid fa-chart-bar"></i>CHART</li></a
         >
+        <a href="#" class="nav-toggleBtn"><i class="fa-solid fa-bars"></i></a>
       </ul>
     </hearder>
 
+    <h4 style="color: red">
+      Caution: 타이머 START버튼을 누르고 운동을 시작해주십시오
+    </h4>
+
     <div class="info-container">
       <h1 id="result-info" class="hidden"></h1>
-      <button class="log-out">정보변경</button>
+      <button class="log-out btn btn-primary">정보변경</button>
     </div>
     <div class="clock-container">
       <h2>운동 타이머</h2>
@@ -55,59 +66,66 @@
           >00</span
         >
       </h1>
-      <button id="start-btn">START</button>
-      <button id="stop-btn">STOP</button>
-      <button id="reset-btn">RESET</button>
+      <button id="start-btn" class="btn btn-danger">START</button>
+      <button id="stop-btn" class="btn btn-danger">STOP</button>
+      <button id="reset-btn" class="btn btn-danger">RESET</button>
     </div>
 
-    <div class="workout-container">
-      <div class="pullup-wrapper">
-        <form id="pullup-form">
-          <h3>풀업</h3>
-          <input
-            class="pullup-count"
-            type="text"
-            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-            placeholder="풀업"
-          />
-          <div class="count-display"></div>
-        </form>
-        <div class="pullup-result"></div>
-      </div>
+    <div class="workout-wrapper hidden">
+      <div class="workout-container">
+        <div class="pullup-wrapper">
+          <form id="pullup-form">
+            <h3>풀업</h3>
+            <input
+              class="pullup-count"
+              type="text"
+              onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+              placeholder="풀업"
+            />
+            <div class="count-display"></div>
+          </form>
+          <div class="pullup-result"></div>
+        </div>
 
-      <!-- 풀업-->
-      <div class="pushup-wrapper">
-        <form id="pushup-form">
-          <h3>푸쉬업</h3>
-          <input
-            class="pushup-count"
-            type="text"
-            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-            placeholder="푸쉬업"
-          />
-          <div class="count-display"></div>
-        </form>
-        <div class="pushup-result"></div>
-      </div>
+        <!-- 풀업-->
+        <div class="pushup-wrapper">
+          <form id="pushup-form">
+            <h3>푸쉬업</h3>
+            <input
+              class="pushup-count"
+              type="text"
+              onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+              placeholder="푸쉬업"
+            />
+            <div class="count-display"></div>
+          </form>
+          <div class="pushup-result"></div>
+        </div>
 
-      <!-- 푸쉬 업 -->
+        <!-- 푸쉬 업 -->
 
-      <div class="squat-wrapper">
-        <form id="squat-form">
-          <h3>스쿼트</h3>
-          <input
-            class="squat-count"
-            type="text"
-            onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
-            placeholder="스쿼트"
-          />
-          <div class="count-display"></div>
-        </form>
-        <div class="squat-result"></div>
+        <div class="squat-wrapper">
+          <form id="squat-form">
+            <h3>스쿼트</h3>
+            <input
+              class="squat-count"
+              type="text"
+              onKeyup="this.value=this.value.replace(/[^0-9]/g,'');"
+              placeholder="스쿼트"
+            />
+            <div class="count-display"></div>
+          </form>
+          <div class="squat-result"></div>
+        </div>
+        <button class="finish-workout btn btn-primary">운동완료</button>
       </div>
     </div>
-    <button class="finish-workout">운동완료</button>
 
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa"
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.6.0.min.js"
       integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4="
